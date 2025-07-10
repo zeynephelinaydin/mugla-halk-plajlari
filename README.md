@@ -25,9 +25,9 @@ Bu proje, Muğla genelindeki halk plajlarının konumlarını ve özelliklerini 
   ├─ script.js
 📄 index.html
 📄 style.css
-📄 plajlar.json
+📄 plajlar.json ```bash
 
-## ⚙️ **Kullanılan Teknolojiler**
+## ⚙️ Kullanılan Teknolojiler
 
 - **HTML, CSS, JavaScript**
 - **Leaflet.js**
@@ -36,12 +36,12 @@ Bu proje, Muğla genelindeki halk plajlarının konumlarını ve özelliklerini 
 
 ---
 
-## 👩‍💻 **Geliştirici**
+## 👩‍💻 Geliştirici
 Zeynep Helin Aydın
 
 ---
 
-## 📱 **Ekran Resimleri**
+## 📱 Ekran Resimleri
 <img width="1470" height="796" alt="image" src="https://github.com/user-attachments/assets/315c9ffb-3031-4b76-84e6-ebffd18a094d" />
 <img width="1459" height="787" alt="image" src="https://github.com/user-attachments/assets/0695046b-d139-40e0-ae6a-72853798421a" />
 <img width="1468" height="797" alt="image" src="https://github.com/user-attachments/assets/fc10e0b4-146d-4610-a959-5ca391cf72dc" />
