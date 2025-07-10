@@ -1,0 +1,27 @@
+[
+    {
+      "isim": "Çalış Halk Plajı",
+      "ilce": "Fethiye",
+      "lat": 36.6690608,
+      "lon": 29.1040858,
+      "mavi_bayrak": true,
+      "engelsiz": true,
+      "tuvalet": true,
+      "dus": true,
+      "giyinme": true,
+      "cankurtaran": true
+    },
+    {
+      "isim": "İztuzu Plajı",
+      "ilce": "Ortaca",
+      "lat": 36.7930261,
+      "lon": 28.6191160,
+      "mavi_bayrak": true,
+      "engelsiz": false,
+      "tuvalet": true,
+      "dus": true,
+      "giyinme": false,
+      "cankurtaran": true
+    }
+  ]
+  

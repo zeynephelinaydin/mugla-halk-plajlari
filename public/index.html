@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muğla Büyükşehir Belediyesi - Halk Plajları</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="icon" href="assets/logo.png" />
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="top-bar-content">
+        <div class="contact-info">
+          <span><i class="fas fa-phone"></i> 444 48 01</span>
+          <span><i class="fas fa-envelope"></i> info@mugla.bel.tr</span>
+          <span><i class="fas fa-clock"></i> Pzt-Cum 08:30-17:30</span>
+        </div>
+        <div class="social-links">
+          <a
+            href="https://www.facebook.com/muglabsb/?locale=tr_TR"
+            title="Facebook"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a
+            href="https://x.com/muglabsb?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+            title="Twitter"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a href="https://www.instagram.com/muglabsb/" title="Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="https://www.youtube.com/@muglabsb" title="YouTube"
+            ><i class="fab fa-youtube"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+      <div class="header-content">
+        <div class="logo-section">
+          <img src="assets/logo.png" alt="Logo" class="logo-img" />
+          <div class="logo-text">
+            <h1>T.C. MUĞLA BÜYÜKŞEHİR BELEDİYESİ</h1>
+            <p>Hizmet ve Kalite Birlikteliği</p>
+          </div>
+        </div>
+
+          <a
+            href="https://www.mugla.bel.tr/toplanmaalanlari"
+            class="emergency-button"
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="fas fa-exclamation-triangle"></i> Acil Durum Toplanma
+            Alanları
+          </a>
+        </div>
+      </div>
+    </header>
+    <!-- Navigation -->
+    <nav class="navigation">
+      <div class="nav-content">
+        <ul class="nav-menu">
+          <li><a href="https://www.mugla.bel.tr/">MBB Ana Sayfa</a></li>
+          <li>
+            <a href="https://www.mugla.bel.tr/organizasyonsemasi">İdari Şema</a>
+          </li>
+          <li><a href="https://www.mugla.bel.tr/hizmetler">Hizmetler</a></li>
+          <li><a href="https://www.mugla.bel.tr/duyurular">Duyurular</a></li>
+          <li><a href="https://ebelediye.mugla.bel.tr/">E-Belediye</a></li>
+          <li><a href="https://www.mugla.bel.tr/iletisim">İletişim</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1><i class="fas fa-umbrella-beach"></i> Halk Plajları</h1>
+      <p>Muğla Büyükşehir Belediyesi Halk Plajları Rehberi</p>
+    </div>
+    <div>
+              <!-- Filtre Alanı -->
+              <div class="filter-topbar">
+                <h3><i class="fas fa-filter"></i> Filtrele</h3>
+                
+                <div class="filter-group">
+                  <label for="ilceSelect">İlçe Seçin</label>
+                  <select id="ilceSelect">
+                    <option value="">Tümü</option>
+                  </select>
+                </div>
+          
+                <div class="filter-group">
+                  <label>Özellikler</label>
+                  <div class="checkbox-group">
+                    <label><input type="checkbox" name="mavi_bayrak"> Mavi Bayrak</label>
+                    <label><input type="checkbox" name="engelsiz"> Engelsiz</label>
+                    <label><input type="checkbox" name="tuvalet"> Tuvalet</label>
+                    <label><input type="checkbox" name="dus"> Duş</label>
+                    <label><input type="checkbox" name="giyinme"> Giyinme Kabini</label>
+                    <label><input type="checkbox" name="cankurtaran"> Cankurtaran</label>
+                  </div>
+                </div>
+          
+                <button id="clearFilters">Filtreleri Temizle</button>
+              </div>
+    </div>
+
+    <main class="main-content">
+      <div class="plaj-search-box">
+        <input type="text" id="plajSearch" placeholder="Plaj ismiyle ara..." />
+        <button id="plajSearchBtn" style="margin-left: 10px; padding: 8px 12px;">
+          <i class="fas fa-search"></i>
+        </button>
+        
+      </div>
+      <div class="map-list-container">
+        <div id="map"></div>
+        <div>
+          <div id="plajListesi" class="scrollable-list"></div>
+          <div id="noResultsMessage" class="no-results" style="display: none;">Sonuç bulunamadı.</div>
+        </div>
+      </div>
+    </main>
+
+    
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>İletişim Bilgileri</h3>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> Şeyh, Belediye Sk. No:6, 48000
+            Muğla Merkez/Muğla
+          </p>
+          <p><i class="fas fa-phone"></i> 444 48 01</p>
+          <p><i class="fas fa-envelope"></i> info@mugla.bel.tr</p>
+        </div>
+        <div class="footer-section">
+          <h3>Hızlı Linkler</h3>
+          <p><a href="https://ebelediye.mugla.bel.tr/">E-Belediye</a></p>
+          <p>
+            <a
+              href="https://ebelediye.mugla.bel.tr/Giris/Index/?returnURL=/Borc"
+              >Online İşlemler</a
+            >
+          </p>
+          <p>
+            <a href="https://www.mugla.bel.tr/ilceler" target="_blank"
+              >İlçe Belediyeleri</a
+            >
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Hizmetler</h3>
+          <p>
+            <a href="https://www.mugla.bel.tr/hizmetler/muski" target="_blank"
+              >Su ve Kanalizasyon (MUSKİ)</a
+            >
+          </p>
+          <p>
+            <a
+              href="https://www.mugla.bel.tr/birim/tarimsal-hizmetler-dairesi-baskanligi"
+              target="_blank"
+              >Tarım Hizmetleri</a
+            >
+          </p>
+          <p>
+            <a href="https://ulasim.muttas.com.tr/" target="_blank"
+              >Ulaşım Hizmetleri (MUTTAŞ)</a
+            >
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Sosyal Medya</h3>
+          <div class="social-links">
+            <a
+              href="https://www.facebook.com/muglabsb/?locale=tr_TR"
+              title="Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              href="https://x.com/muglabsb?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+              title="Twitter"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="https://www.instagram.com/muglabsb/" title="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="https://www.youtube.com/@muglabsb" title="YouTube"
+              ><i class="fab fa-youtube"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Muğla Büyükşehir Belediyesi. Tüm hakları saklıdır.</p>
+      </div>
+    </footer>
+
+
+    <button id="scrollToTopBtn" title="Yukarı Çık">
+      <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+      const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+      window.addEventListener("scroll", () => {
+        scrollToTopBtn.style.display = window.scrollY > 300 ? "flex" : "none";
+      });
+      scrollToTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    </script>
+
+    <script src="js/script.js"></script>
+
+  </body>
+</html>
+
